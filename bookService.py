@@ -20,9 +20,11 @@ class BookService():
         return bookkey
 
     def update_book(self, key, book):
+        if key == 0:
+            raise ValueError("no puede book_id")
         Repository.book[key]['_name'] = book.name
-        Repository.book[key]['_surname'] = book.surname
-        Repository.book[key]['_age'] = book.age
+        Repository.book[key]['_authorName'] = book.authorName
+        Repository.book[key]['_memberLegajo'] = book.memberLegajo
 
     def delete_book(self, key):
         del Repository.book[key]
